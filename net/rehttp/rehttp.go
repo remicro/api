@@ -20,6 +20,7 @@ type Builder interface {
 	Encoded(object interface{}) Builder
 	ContentType(contentType ContentType) Builder
 	Header(key, value string)
+	Cookie(key string, value []byte) Builder
 	Encoder(encoder serialization.Encoder) Builder
 	Decoder(decoder serialization.Decoder) Builder
 	Go() (response Response, err error)
