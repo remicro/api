@@ -14,6 +14,7 @@ type Response interface {
 type Builder interface {
 	GET(url string) Builder
 	POST(url string) Builder
+	PUT(url string) Builder
 	DELETE(url string) Builder
 	PATCH(url string) Builder
 	OPTIONS(url string) Builder
