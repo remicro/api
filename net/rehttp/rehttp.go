@@ -7,6 +7,7 @@ type Response interface {
 	Decoded() (decoded interface{})
 	ContentType() (contentType ContentType)
 	Header(key string) (values []string)
+	Body() (data []byte)
 	Error() (err error)
 }
 
