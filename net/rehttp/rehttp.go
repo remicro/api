@@ -17,7 +17,8 @@ type Builder interface {
 	PATCH(url string) Builder
 	OPTIONS(url string) Builder
 	QueryParam(key, value string) Builder
-	Encoded(object interface{}) Builder
+	ToEncode(object interface{}) Builder
+	ToDecode(object interface{}) Builder
 	ContentType(contentType ContentType) Builder
 	Header(key, value string) Builder
 	Cookie(key string, value []byte) Builder
