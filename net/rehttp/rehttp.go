@@ -19,7 +19,7 @@ type Builder interface {
 	QueryParam(key, value string) Builder
 	Encoded(object interface{}) Builder
 	ContentType(contentType ContentType) Builder
-	Header(key, value string)
+	Header(key, value string) Builder
 	Cookie(key string, value []byte) Builder
 	Encoder(encoder serialization.Encoder) Builder
 	Decoder(decoder serialization.Decoder) Builder
