@@ -7,7 +7,7 @@ func (ct ContentType) String() string {
 }
 
 const (
-	ContentTypeJson = "application/json"
-	ConentTypeXML = "application/xml"
-	ContentTypeHTML = "text/html"
+	ContentTypeJson = ContentType("application/json")
+	ConentTypeXML = ContentType("application/xml")
+	ContentTypeHTML = ContentType("text/html")
 )
