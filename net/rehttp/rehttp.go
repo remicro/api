@@ -2,6 +2,8 @@ package rehttp
 
 import "github.com/remicro/api/serialization"
 
+type Before func(b Builder, url string, body []byte)
+
 type Response interface {
 	Status() (code int)
 	Decoded() (decoded interface{})
@@ -26,6 +28,7 @@ type Builder interface {
 	Cookie(key string, value []byte) Builder
 	Encoder(encoder serialization.Encoder) Builder
 	Decoder(decoder serialization.Decoder) Builder
+	Before(fn Before) Builder
 	Go() (response Response, err error)
 }
 
