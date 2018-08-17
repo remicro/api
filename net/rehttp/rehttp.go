@@ -2,7 +2,7 @@ package rehttp
 
 import "github.com/remicro/api/serialization"
 
-type Before func(b Builder, url string, body []byte)
+type Before func(b Builder, path string, body []byte)
 
 type Response interface {
 	Status() (code int)
@@ -14,12 +14,13 @@ type Response interface {
 }
 
 type Builder interface {
-	GET(url string) Builder
-	POST(url string) Builder
-	PUT(url string) Builder
-	DELETE(url string) Builder
-	PATCH(url string) Builder
-	OPTIONS(url string) Builder
+	Address(address string) Builder
+	GET(path string) Builder
+	POST(path string) Builder
+	PUT(path string) Builder
+	DELETE(path string) Builder
+	PATCH(path string) Builder
+	OPTIONS(path string) Builder
 	QueryParam(key, value string) Builder
 	ToEncode(object interface{}) Builder
 	ToDecode(object interface{}) Builder
