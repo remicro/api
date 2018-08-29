@@ -1,6 +1,9 @@
 package rehttp
 
-import "github.com/remicro/api/serialization"
+import (
+	"github.com/remicro/api/logging"
+	"github.com/remicro/api/serialization"
+)
 
 type Before func(b Builder, path string, body []byte)
 
@@ -14,6 +17,8 @@ type Response interface {
 }
 
 type Builder interface {
+	Logger(logger logging.Logger) Builder
+	DecodeType(contentType ContentType) Builder
 	Address(address string) Builder
 	GET(path string) Builder
 	POST(path string) Builder
