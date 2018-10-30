@@ -1,9 +1,10 @@
 package app
 
 import (
+	"context"
+
 	"github.com/remicro/api"
 	"github.com/remicro/api/ioc"
-	"context"
 )
 
 type Application interface {
@@ -12,10 +13,10 @@ type Application interface {
 }
 
 type Builder interface {
-	Container(container ioc.Container) (Builder)
-	Name(name string) (Builder)
-	Version(name string) (Builder)
-	Context(ctx context.Context) (Builder)
+	Container(container ioc.Container) Builder
+	Name(name string) Builder
+	Version(name string) Builder
+	Context(ctx context.Context) Builder
 
 	Build() (app Application)
 }
