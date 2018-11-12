@@ -1,6 +1,7 @@
 package rehttp
 
 import (
+	"github.com/remicro/api/cloud/balancer"
 	"github.com/remicro/api/logging"
 	"github.com/remicro/api/serialization"
 )
@@ -17,8 +18,10 @@ type Response interface {
 }
 
 type Builder interface {
+	Balancer(bln balancer.Balancer) Builder
 	Logger(logger logging.Logger) Builder
 	DecodeType(contentType ContentType) Builder
+	Service(name string) Builder
 	Address(address string) Builder
 	GET(path string) Builder
 	POST(path string) Builder
@@ -40,5 +43,6 @@ type Builder interface {
 
 type Factory interface {
 	To(address string) Builder
+	Service(name string) Builder
 }
 
